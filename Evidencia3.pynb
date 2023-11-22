@@ -1,0 +1,61 @@
+
+import pickle
+
+# Clase de ejemplo para serializar
+class Persona:
+    def __init__(self, nombre, edad):
+        self.nombre = nombre
+        self.edad = edad
+
+# Función para serializar y guardar en un archivo con pickle
+def serializar_y_guardar(objeto, nombre_archivo):
+    with open(nombre_archivo, 'wb') as archivo:
+        pickle.dump(objeto, archivo)
+    print(f'Objeto serializado y guardado en {nombre_archivo}')
+
+# Función para recuperar y deserializar desde un archivo con pickle
+def recuperar_y_deserializar(nombre_archivo):
+    with open(nombre_archivo, 'rb') as archivo:
+        objeto_recuperado = pickle.load(archivo)
+    print(f'Objeto recuperado: {objeto_recuperado.nombre}, {objeto_recuperado.edad}')
+    return objeto_recuperado
+
+# Objeto de ejemplo
+persona_original = Persona(nombre='Juan', edad=30)
+
+# Serializar y guardar en un archivo con pickle
+serializar_y_guardar(persona_original, 'persona.pickle')
+
+# Recuperar y deserializar desde el archivo con pickle
+persona_recuperada = recuperar_y_deserializar('persona.pickle')
+
+#Este código tiene como objetivo serializar (convertir a un formato que puede ser almacenado) y luego deserializar (recuperar a su forma original) un #objeto de la clase Persona utilizando la biblioteca pickle. Aquí está el desglose de lo que hace cada parte del código:
+
+#Definición de la Clase Persona:
+
+#La clase Persona tiene dos atributos, nombre y edad, que representan el nombre y la edad de una persona.
+#Función serializar_y_guardar:
+
+#Toma un objeto y un nombre de archivo como parámetros.
+#Abre el archivo en modo binario ('wb'), que es necesario para la serialización con pickle.
+#Utiliza pickle.dump para escribir el objeto en el archivo.
+#Muestra un mensaje indicando que el objeto ha sido serializado y guardado en el archivo.
+#Función recuperar_y_deserializar:
+
+#Toma un nombre de archivo como parámetro.
+Abre el archivo en modo binario ('rb').
+#Utiliza pickle.load para leer el objeto desde el archivo.
+#Muestra un mensaje indicando que el objeto ha sido recuperado.
+#Devuelve el objeto recuperado.
+#Creación de un Objeto de Ejemplo persona_original:
+
+#Crea una instancia de la clase Persona con el nombre 'Juan' y la edad 30.
+#Serialización y Guardado del Objeto:
+
+Llama a la función serializar_y_guardar para convertir el objeto persona_original a un formato serializado y guardarlo en un archivo llamado 'persona.pickle'.
+Recuperación y Deserialización del Objeto:
+
+Llama a la función recuperar_y_deserializar para leer el objeto desde el archivo 'persona.pickle' y almacenarlo en la variable persona_recuperada.
+Impresión del Objeto Recuperado:
+
+Imprime el nombre y la edad del objeto persona_recuperada.
